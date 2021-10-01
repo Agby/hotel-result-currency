@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { white } from '../../utils/color';
+import { white } from '../../../utils/color';
 
 export default {
-  HotelMainPageContainer: styled.div`
+  HotelListContainer: styled.div`
     display: flex;
     flex-flow: column nowrap;
     width: 100%;

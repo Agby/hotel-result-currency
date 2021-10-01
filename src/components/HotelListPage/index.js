@@ -1,3 +1,3 @@
-import HotelListPage from './HotelListPage';
+import HotelMainPage from './HotelMainPage';
 
-export default HotelListPage;
+export default HotelMainPage;
