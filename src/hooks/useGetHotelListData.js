@@ -6,6 +6,17 @@ export const arrayToObj = (data, keyProp = 'id') => {
   }, {});
 };
 
+export const makeHotelList = ({ hotelList, hotelData }) => {
+  const formattedHotelData = arrayToObj(hotelData);
+
+  return hotelList.map((item) => {
+    return {
+      ...item,
+      ...formattedHotelData[item.id],
+    };
+  });
+};
+
 export const useGetHotelListData = () => {
   const { hotelData, isLoadingHotelData, getHotelDataError } = useHotelData();
   const { hotelList, isLoadingHotelList, getHotelListError } = useHotelListWithCurrency();
@@ -20,13 +31,7 @@ export const useGetHotelListData = () => {
     };
   }
 
-  const formattedHotelData = arrayToObj(hotelData);
-  const result = hotelList.map((item) => {
-    return {
-      ...item,
-      ...formattedHotelData[item.id],
-    };
-  });
+  const result = makeHotelList({ hotelList, hotelData });
 
   return {
     isLoading,

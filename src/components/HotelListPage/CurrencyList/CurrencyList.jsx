@@ -12,6 +12,7 @@ export default () => {
 
   const handleClick = (currency) => {
     setCurrency(currency);
+    sessionStorage.setItem('currency', currency);
   };
 
   return (

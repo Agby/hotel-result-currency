@@ -41,6 +41,7 @@ export default {
     flex-flow: row nowrap;
     align-items: flex-start;
     justify-content: space-between;
+    text-align: left;
     padding: 10px;
   `,
   HotelName: styled.h3`

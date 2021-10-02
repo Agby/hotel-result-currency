@@ -9,8 +9,10 @@ export const currencyType = {
 };
 
 export const useCurrencyStore = create((set) => {
+  const initCurrency = sessionStorage.getItem('currency') || 'USD';
+
   return {
-    currency: currencyType.USD,
+    currency: initCurrency,
     setCurrency: (currency) => {
       return set(
         produce((state) => {
