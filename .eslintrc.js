@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'react/prop-types': 0,
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'return' },
