@@ -9,12 +9,18 @@ export const arrayToObj = (data, keyProp = 'id') => {
 export const makeHotelList = ({ hotelList, hotelData }) => {
   const formattedHotelData = arrayToObj(hotelData);
 
-  return hotelList.map((item) => {
-    return {
-      ...item,
-      ...formattedHotelData[item.id],
-    };
+  const result = [];
+
+  hotelList.forEach((item) => {
+    if (formattedHotelData?.[item.id]) {
+      result.push({
+        ...item,
+        ...formattedHotelData[item.id],
+      });
+    }
   });
+
+  return result;
 };
 
 export const useGetHotelListData = () => {

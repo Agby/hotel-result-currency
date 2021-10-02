@@ -47,7 +47,7 @@ export default {
   HotelName: styled.h3`
     position: relative;
     align-items: flex-end;
-    margin: 0 0 5px 0;
+    margin: 0 5px;
   `,
   HotelStars: styled.p`
     position: absolute;
@@ -56,7 +56,6 @@ export default {
     font-size: 15px;
     color: ${darkred};
     font-weight: bloder;
-    break-word: no-break;
   `,
   HotelRating: styled.h4`
     margin: 0 0 5px 0;

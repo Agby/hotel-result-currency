@@ -7,9 +7,10 @@ export default ({ value }) => {
     return state.currency;
   });
   const pricing = useMemo(() => {
-    return new Intl.NumberFormat('en-IN', {
+    return new Intl.NumberFormat(undefined, {
       style: 'currency',
       currency: currentCurrency,
+      minimumSignificantDigits: 2,
     }).format(value);
   }, [value, currentCurrency]);
 
