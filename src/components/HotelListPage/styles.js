@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { white } from '../../utils/color';
+import { purewhite } from '../../utils/color';
 
 export default {
   HotelMainPageContainer: styled.div`
@@ -7,6 +7,6 @@ export default {
     flex-flow: column nowrap;
     width: 100%;
     height: 100%;
-    background: ${white};
+    background: ${purewhite};
   `,
 };

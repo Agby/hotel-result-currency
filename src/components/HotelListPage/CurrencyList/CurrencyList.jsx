@@ -16,11 +16,13 @@ export default () => {
 
   return (
     <S.HotelListContainer>
-      <div>{currentCurrency}</div>
       {Object.keys(currencyType).map((currencyKey) => {
+        const isActive = currentCurrency === currencyKey;
+
         return (
           <S.CurrencyButton
             key={currencyKey}
+            className={isActive && 'active'}
             onClick={() => {
               return handleClick(currencyKey);
             }}
