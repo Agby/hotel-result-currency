@@ -3,9 +3,7 @@ import Pricing from '../../../../elements/Pricing';
 import S from './styles';
 
 export default ({ available, hotel }) => {
-  const {
-    price, name, photo, rating, stars, competitor,
-  } = hotel;
+  const { price, name, photo, rating, stars, competitorPrice } = hotel;
 
   const getRatingClass = useMemo(() => {
     if (rating > 8.9) return 'better';
@@ -15,7 +13,9 @@ export default ({ available, hotel }) => {
   }, [rating]);
 
   const renderPricing = () => {
-    if (available) return <Pricing value={price} originValue={competitor} />;
+    if (available) {
+      return <Pricing value={price} originValue={competitorPrice} />;
+    }
 
     return <S.UnAvailabe>Rates unavailable</S.UnAvailabe>;
   };
