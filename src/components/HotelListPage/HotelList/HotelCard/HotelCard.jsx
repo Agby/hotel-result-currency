@@ -3,7 +3,9 @@ import Pricing from '../../../../elements/Pricing';
 import S from './styles';
 
 export default ({ available, hotel }) => {
-  const { price, name, photo, rating, stars, competitorPrice } = hotel;
+  const {
+    price, name, photo, rating, stars, competitorPrice,
+  } = hotel;
 
   const getRatingClass = useMemo(() => {
     if (rating > 8.9) return 'better';

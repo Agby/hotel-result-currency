@@ -14,9 +14,9 @@ export default {
     }
   `,
   OriginValue: styled.p`
-    font-size: 10px;
     margin: 0px;
     margin-right: 5px;
+    font-size: 10px;
     text-decoration: line-through;
     opacity: 0.8;
   `,

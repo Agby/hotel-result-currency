@@ -11,31 +11,31 @@ import {
 
 export default {
   HotelCard: styled.div`
-    display: inline-block;
     position: relative;
-    margin: 15px;
-    height: 250px;
+    display: inline-block;
     min-width: 335px;
     max-width: 335px;
+    height: 250px;
     min-height: 300px;
     max-height: 300px;
-    box-shadow: 3px 3px 5px ${lightgrey};
-    transition: all 0.1s ease-in-out;
-    cursor: pointer;
+    margin: 15px;
     overflow: hidden;
     border-radius: 3px;
+    box-shadow: 3px 3px 5px ${lightgrey};
+    cursor: pointer;
     opacity: 0.8;
+    transition: all 0.1s ease-in-out;
 
     &:hover {
       box-shadow: 3px 3px 5px #aaa;
       transform: translateX(2px) translateY(-2px);
-      transition: all 0.1s ease-in-out;
       opacity: 1;
+      transition: all 0.1s ease-in-out;
     }
 
     &.unavailable {
-      opacity: 0.3;
       cursor: default;
+      opacity: 0.3;
     }
 
     &.unavailable:hover {
@@ -52,10 +52,10 @@ export default {
   CardInfo: styled.div`
     display: flex;
     flex-flow: row nowrap;
-    align-items: flex-start;
     justify-content: space-between;
-    text-align: left;
+    align-items: flex-start;
     padding: 10px;
+    text-align: left;
   `,
   HotelName: styled.h3`
     position: relative;
@@ -64,17 +64,17 @@ export default {
   `,
   HotelStars: styled.p`
     position: absolute;
-    left: 0px;
     bottom: -35px;
-    font-size: 15px;
+    left: 0px;
     color: ${darkred};
     font-weight: bloder;
+    font-size: 15px;
   `,
   HotelRating: styled.h4`
     margin: 0 0 5px 0;
     padding: 2px 4px;
-    border-radius: 3px;
     color: ${white};
+    border-radius: 3px;
 
     &.better {
       background: ${good};
@@ -101,8 +101,8 @@ export default {
     position: absolute;
     right: 10px;
     bottom: 0px;
-    font-size: 10px;
     color: #aaa;
+    font-size: 10px;
 
     &.taxes-included {
       color: ${darkred};
