@@ -4,6 +4,7 @@ export const warrior = '#33384D';
 export const lightgrey = '#ddd';
 export const purewhite = '#fff';
 export const darkred = 'darkred';
+export const red = 'red';
 export const darkorange = 'darkorange';
 export const darkgreen = 'darkgreen';
 

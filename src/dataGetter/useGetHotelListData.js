@@ -6,15 +6,31 @@ export const arrayToObj = (data, keyProp = 'id') => {
   }, {});
 };
 
+// get the most expensive pricing of competitors
+export const getCompetitors = (competitors = undefined) => {
+  let res = false;
+
+  if (competitors) {
+    Object.keys(competitors).forEach((key) => {
+      if (competitors[key] > res) {
+        res = competitors[key];
+      }
+    });
+  }
+
+  return res;
+};
+
 export const makeHotelList = ({ hotelWithCurrency, hotelData }) => {
   const formattedHotelData = arrayToObj(hotelData);
   const hotelList = [];
 
-  hotelWithCurrency.forEach((item) => {
+  hotelWithCurrency.forEach(({ competitors, ...item }) => {
     if (item.id in formattedHotelData) {
       hotelList.push({
         ...item,
         ...formattedHotelData[item.id],
+        competitor: getCompetitors(competitors),
         available: true,
       });
 

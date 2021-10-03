@@ -91,10 +91,21 @@ export default {
   PricingField: styled.div`
     position: absolute;
     right: 10px;
-    bottom: 10px;
+    bottom: 20px;
   `,
   UnAvailabe: styled.h4`
     margin: 0 0 5px 0;
     color: ${warrior};
+  `,
+  TaxesField: styled.p`
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    font-size: 10px;
+    color: #aaa;
+
+    &.taxes-included {
+      color: ${darkred};
+    }
   `,
 };

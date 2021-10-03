@@ -4,7 +4,7 @@ import S from './styles';
 
 export default ({ available, hotel }) => {
   const {
-    price, name, photo, rating, stars,
+    price, name, photo, rating, stars, competitor,
   } = hotel;
 
   const getRatingClass = useMemo(() => {
@@ -15,10 +15,11 @@ export default ({ available, hotel }) => {
   }, [rating]);
 
   const renderPricing = () => {
-    if (available) return <Pricing value={price} />;
+    if (available) return <Pricing value={price} originValue={competitor} />;
 
     return <S.UnAvailabe>Rates unavailable</S.UnAvailabe>;
   };
+  const taxesIncluded = 'taxes_and_fees' in hotel;
 
   return (
     <S.HotelCard className={!available && 'unavailable'}>
@@ -34,6 +35,11 @@ export default ({ available, hotel }) => {
         <S.HotelRating className={getRatingClass}>{rating}</S.HotelRating>
       </S.CardInfo>
       <S.PricingField>{renderPricing()}</S.PricingField>
+      {available && (
+        <S.TaxesField className={taxesIncluded && 'taxes-included'}>
+          {taxesIncluded ? 'taxed & fees included' : 'excluding taxes & fees'}
+        </S.TaxesField>
+      )}
     </S.HotelCard>
   );
 };
