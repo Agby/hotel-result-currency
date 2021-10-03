@@ -1,4 +1,4 @@
-import { useHotelData, useHotelListWithCurrency } from '../apis';
+import { useHotelData, useHotelWithCurrency } from '../apis';
 
 export const arrayToObj = (data, keyProp = 'id') => {
   return data.reduce((acc, datum) => {
@@ -6,26 +6,32 @@ export const arrayToObj = (data, keyProp = 'id') => {
   }, {});
 };
 
-export const makeHotelList = ({ hotelList, hotelData }) => {
+export const makeHotelList = ({ hotelWithCurrency, hotelData }) => {
   const formattedHotelData = arrayToObj(hotelData);
+  const hotelList = [];
 
-  const result = [];
-
-  hotelList.forEach((item) => {
-    if (formattedHotelData?.[item.id]) {
-      result.push({
+  hotelWithCurrency.forEach((item) => {
+    if (item.id in formattedHotelData) {
+      hotelList.push({
         ...item,
         ...formattedHotelData[item.id],
+        available: true,
       });
+
+      delete formattedHotelData[item.id];
     }
   });
 
-  return result;
+  const unAvailableList = Object.keys(formattedHotelData).map((key) => {
+    return { ...formattedHotelData[key], available: false };
+  });
+
+  return [...hotelList, ...unAvailableList];
 };
 
 export const useGetHotelListData = () => {
   const { hotelData, isLoadingHotelData, getHotelDataError } = useHotelData();
-  const { hotelList, isLoadingHotelList, getHotelListError } = useHotelListWithCurrency();
+  const { hotelWithCurrency, isLoadingHotelList, getHotelListError } = useHotelWithCurrency();
   const isLoading = isLoadingHotelData || isLoadingHotelList;
   const error = getHotelDataError || getHotelListError;
 
@@ -37,11 +43,11 @@ export const useGetHotelListData = () => {
     };
   }
 
-  const result = makeHotelList({ hotelList, hotelData });
+  const hotelList = makeHotelList({ hotelWithCurrency, hotelData });
 
   return {
     isLoading,
-    data: result,
+    data: hotelList,
     error: getHotelDataError || getHotelListError,
   };
 };

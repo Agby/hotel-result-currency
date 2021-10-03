@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import Pricing from '../../../../elements/Pricing';
 import S from './styles';
 
-export default ({ hotel }) => {
+export default ({ available, hotel }) => {
   const {
     price, name, photo, rating, stars,
   } = hotel;
@@ -14,8 +14,14 @@ export default ({ hotel }) => {
     return 'bad';
   }, [rating]);
 
+  const renderPricing = () => {
+    if (available) return <Pricing value={price} />;
+
+    return <S.UnAvailabe>Rates unavailable</S.UnAvailabe>;
+  };
+
   return (
-    <S.HotelCard>
+    <S.HotelCard className={!available && 'unavailable'}>
       <S.CardImage src={photo} />
       <S.CardInfo>
         <S.HotelName>
@@ -27,7 +33,7 @@ export default ({ hotel }) => {
         </S.HotelName>
         <S.HotelRating className={getRatingClass}>{rating}</S.HotelRating>
       </S.CardInfo>
-      <Pricing value={price} />
+      <S.PricingField>{renderPricing()}</S.PricingField>
     </S.HotelCard>
   );
 };

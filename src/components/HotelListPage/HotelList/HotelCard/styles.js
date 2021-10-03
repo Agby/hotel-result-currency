@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {
   lightgrey,
   white,
+  warrior,
   darkred,
   good,
   okay,
@@ -23,12 +24,24 @@ export default {
     cursor: pointer;
     overflow: hidden;
     border-radius: 3px;
+    opacity: 0.8;
 
     &:hover {
       box-shadow: 3px 3px 5px #aaa;
       transform: translateX(2px) translateY(-2px);
       transition: all 0.1s ease-in-out;
-      opacity: 0.9;
+      opacity: 1;
+    }
+
+    &.unavailable {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    &.unavailable:hover {
+      box-shadow: 3px 3px 5px #aaa;
+      transform: translateX(0px) translateY(0px);
+      transition: none;
     }
   `,
   CardImage: styled.img`
@@ -74,5 +87,14 @@ export default {
     &.bad {
       background: ${bad};
     }
+  `,
+  PricingField: styled.div`
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  `,
+  UnAvailabe: styled.h4`
+    margin: 0 0 5px 0;
+    color: ${warrior};
   `,
 };

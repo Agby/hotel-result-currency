@@ -24,7 +24,7 @@ const getSource = (currency) => {
   return `http://5df9cc6ce9f79e0014b6b3dc.mockapi.io/hotels/tokyo/1/${currency}`;
 };
 
-export const useHotelListWithCurrency = () => {
+export const useHotelWithCurrency = () => {
   const currency = useCurrencyStore((state) => {
     return state.currency;
   });
@@ -32,7 +32,7 @@ export const useHotelListWithCurrency = () => {
   const { data, error } = useSWR(url, fetcher);
 
   return {
-    hotelList: data,
+    hotelWithCurrency: data,
     isLoadingHotelList: !error && !data,
     getHotelListError: error,
   };

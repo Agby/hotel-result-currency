@@ -1,14 +1,20 @@
 import React, { useCallback } from 'react';
 import S from './styles';
-import { useGetHotelListData } from '../../../hooks/useGetHotelListData';
+import { useGetHotelListData } from '../../../dataGetter/useGetHotelListData';
 import HotelCard from './HotelCard';
 
 export default () => {
   const { isLoading, data, error } = useGetHotelListData();
 
   const renderHotelCard = useCallback(() => {
-    return data.map((hotel) => {
-      return <HotelCard key={`card-${hotel.id}`} hotel={hotel} />;
+    return data.map(({ available, ...hotel }) => {
+      return (
+        <HotelCard
+          key={`card-${hotel.id}`}
+          hotel={hotel}
+          available={available}
+        />
+      );
     });
   }, [data]);
 
