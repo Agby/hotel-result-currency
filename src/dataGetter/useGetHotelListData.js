@@ -13,7 +13,7 @@ export const getCompetitors = (competitors = undefined) => {
   let res = false;
 
   if (competitors) {
-    Object.keys(competitors).forEach(key => {
+    Object.keys(competitors).forEach((key) => {
       if (competitors[key] > res) {
         res = competitors[key];
       }
@@ -32,7 +32,7 @@ export const makeHotelList = ({ hotelWithCurrency, hotelData }) => {
       hotelList.push({
         ...item,
         ...formattedHotelData[item.id],
-        ...competitors,
+        competitors,
         competitorPrice: getCompetitors(competitors),
         available: true,
       });
@@ -41,7 +41,7 @@ export const makeHotelList = ({ hotelWithCurrency, hotelData }) => {
     }
   });
 
-  const unAvailableList = Object.keys(formattedHotelData).map(key => {
+  const unAvailableList = Object.keys(formattedHotelData).map((key) => {
     return { ...formattedHotelData[key], available: false };
   });
 
@@ -50,8 +50,7 @@ export const makeHotelList = ({ hotelWithCurrency, hotelData }) => {
 
 export const useGetHotelListData = () => {
   const { hotelData, isLoadingHotelData, getHotelDataError } = useHotelData();
-  const { hotelWithCurrency, isLoadingHotelList, getHotelListError } =
-    useHotelWithCurrency();
+  const { hotelWithCurrency, isLoadingHotelList, getHotelListError } = useHotelWithCurrency();
   const isLoading = isLoadingHotelData || isLoadingHotelList;
   const error = getHotelDataError || getHotelListError;
 
