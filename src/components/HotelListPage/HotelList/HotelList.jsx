@@ -6,7 +6,7 @@ import HotelCard from './HotelCard';
 export default () => {
   const { isLoading, data, error } = useGetHotelListData();
 
-  const renderHotelList = useCallback(() => {
+  const renderHotelCard = useCallback(() => {
     return data.map((hotel) => {
       return <HotelCard key={`card-${hotel.id}`} hotel={hotel} />;
     });
@@ -31,7 +31,7 @@ export default () => {
 
   return (
     <S.HotelListContainer>
-      {renderHotelList()}
+      {renderHotelCard()}
       {renderEmptyCard()}
     </S.HotelListContainer>
   );
